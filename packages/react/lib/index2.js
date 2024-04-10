@@ -1,3 +1,3 @@
-export { B as default } from './Button-BtOXdBbH.js';
+export { B as default } from './Button-Bg1XP9yI.js';
 import 'react';
 //# sourceMappingURL=index2.js.map
