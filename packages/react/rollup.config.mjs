@@ -5,7 +5,8 @@ export default {
         'src/index.ts',
         'src/atoms/Button/index.ts',
         'src/atoms/Color/index.ts',
-        'src/atoms/Text/index.ts'
+        'src/atoms/Text/index.ts',
+        'src/atoms/Margin/index.ts',
     ],
     output: {
         dir: 'lib',
@@ -14,5 +15,5 @@ export default {
     },
     plugins: [TS()],
     preserveModules: true,
-    external: ['react']
+    external: ['react', '@ds.e/foundation']
 }
