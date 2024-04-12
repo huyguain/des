@@ -6,13 +6,20 @@ interface SelectOption {
     value: string,
 }
 
+interface RenderOptionProps {
+    isSelected: Boolean
+    option: SelectOption
+    getOptionRecommendedProps: (overrideProps?: Object) => Object
+}
+
 interface SelectProps {
     onOptionSelected?: (option: SelectOption, optionIndex: number) => void
     options?: SelectOption[]
     label?: string
+    renderOption?: (props: RenderOptionProps) => React.ReactNode
 }
 
-const Select: React.FunctionComponent<SelectProps> = ({ options = [], label = 'Please selet an option...', onOptionSelected: handler }) => {
+const Select: React.FunctionComponent<SelectProps> = ({ options = [], label = 'Please selet an option...', onOptionSelected: handler, renderOption }) => {
     const [isOpen, setIsOpen] = useState < Boolean > (false)
     const [selectedIndex, setSelectedIndex] = useState < null | number > (null)
     const labelRef = useRef < HTMLButtonElement > (null)
@@ -53,6 +60,26 @@ const Select: React.FunctionComponent<SelectProps> = ({ options = [], label = 'P
                     {
                         options.map((option, optionIndex) => {
                             const isSelected = selectedIndex === optionIndex
+
+                            const renderOptionProps = {
+                                option,
+                                isSelected,
+                                getOptionRecommendedProps: (overrideProps = {}) => {
+                                    return {
+                                        className: `dse-select__option
+                                            ${isSelected ? 'dse-select__option--selected' : ''}
+                                        `,  
+                                        key: option.value,
+                                        onClick: () => setOptionSelected(option, optionIndex),
+                                        ...overrideProps,      
+                                    }
+                                }
+                            }
+
+                            if (renderOption) {
+                                return renderOption(renderOptionProps)
+                            }
+
                             return <li className={`dse-select__option 
                                 ${isSelected ? 'dse-select__option--selected' : ''}
                                 `}
