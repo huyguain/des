@@ -43,7 +43,7 @@ const Select: React.FunctionComponent<SelectProps> = ({ options = [], label = 'P
                 <ul style={{ top: overlayTop }} className='dse-select__overlay'>
                     {
                         options.map((option, optionIndex) => {
-                            return <li onClick={() => onOptionSelected(option, optionIndex)} key={option.value}>{option.label}</li>
+                            return <li className='dse-select__option' onClick={() => onOptionSelected(option, optionIndex)} key={option.value}>{option.label}</li>
                         })
                     }
                 </ul>
