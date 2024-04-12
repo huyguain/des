@@ -6,6 +6,7 @@ import '@ds.e/scss/lib/Utilities.css'
 import '@ds.e/scss/lib/Button.css'
 import '@ds.e/scss/lib/Text.css'
 import '@ds.e/scss/lib/Margin.css'
+import '@ds.e/scss/lib/Select.css'
 
 const options = [{
     label: 'Strict Black',
@@ -27,6 +28,7 @@ ReactDOM.render(
             <Text size='xs'>this is some text</Text>
         </Margin> */}
         <Select options={options} />
+        <p>This is some text</p>
     </div>,
     document.querySelector('#root')
 )
